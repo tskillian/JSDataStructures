@@ -5,27 +5,6 @@ var BST = function() {
 
 };
 
-BST.prototype.remove = function(value) {
-
-};
-
-BST.prototype.isBalanced = function() {
-	var left = this.root;
-	var right = null;
-
-	function recurse(left, leftHeight, right, rightHeight) {
-		if (left === null && right === null) {
-			if (Math.abs(leftHeight - rightHeight) <= 1) {
-				return true;
-			}
-		} else {
-			recurse(left.left, leftHeight+1, left.right, rightHeight+1);
-		}
-	}
-
-	recurse(left, 0, right, 0);
-};
-
 BST.prototype.contains = function(searchValue) {
 	if (this.root === null) {
 		throw new Error("No nodes in tree");
