@@ -3,6 +3,13 @@ var LinkedList = function() {
 	this.numItems = 0;
 };
 
+LinkedList.prototype.pop_front = function(callback) {
+	var toReturn = this.head.data;
+	this.head.data = this.head.next.data;
+	this.head.next = this.head.next.next;
+	callback(toReturn);
+}
+
 LinkedList.prototype.insert = function(value) {
 	if(this.head === null) {
 		this.head = {data: value, next: null};
@@ -79,7 +86,7 @@ ll.insert("class");
 // {data: "hello", next: {data: "class", next: null}}
 //ll.insert("test");
 
-ll.remove(1);
+//ll.remove(1);
 // {data: "hello", next: null}
 //console.log(ll.head);
 
@@ -87,12 +94,18 @@ ll.remove(1);
 
 ll.insert("world");
 // {data: "hello", next: {data: "world", next:  null}}
-console.log(ll.head);
+//console.log(ll.head);
 
 
 //ll.print();
 // "["hello", "world"]"
-console.log(ll.print());
+//console.log(ll.print());
+
+var pop_callback = function(a) {
+	console.log(a);
+}
+ll.pop_front(pop_callback);
+//console.log(ll.head);
 
 
 
